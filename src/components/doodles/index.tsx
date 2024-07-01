@@ -79,6 +79,8 @@ const DoodleModule = () => {
     }
   }
 
+  console.log('test');
+  
   const onFlipImage = ( key: number, id:number ) => {
     setFlip(true);
     const doodleExists = selectDoodle.find(item => item.id === id && key !== item.index);

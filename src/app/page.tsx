@@ -7,6 +7,7 @@ export default function Home() {
       <div className="z-10 w-full items-center justify-between font-mono text-sm lg:flex">
           <Link href="/think">Think Number</Link>
           <Link href="/doodle">Match Bobs</Link>
+          <Link href="/bingo">Bingo</Link>
         </div>
     </main>
   );

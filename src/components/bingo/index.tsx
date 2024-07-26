@@ -26,17 +26,24 @@ const Bingo = () => {
 
   React.useEffect(() => {
     const cookieNumbers = getCookie('arr_num');
+    console.log('cookie', cookieNumbers);
+    
   }, [])
   
   React.useEffect(() => {
     setCookie(`existing_num`, JSON.stringify(existingNumber) ) 
-  },[existingNumber])
+  }, [existingNumber])
+
+  React.useEffect(() => {
+    setCookie(`existing_num`, JSON.stringify(arrayNumbers) ) 
+  }, [arrayNumbers])
+  
 
   const onMakeArrayChange = () => {
     if (numbers && numbers.length) {
       const _n = numbers.split(' ');
       setArrayNumbers(prev => [...prev, { ..._n }])
-      setCookie(`arr_num`, JSON.stringify(arrayNumbers) ) 
+      // setTimeout(() => setCookie(`arr_num`, JSON.stringify(arrayNumbers) ) ,1000)
       setNumbers('')
     }
   }
@@ -81,8 +88,8 @@ const Bingo = () => {
       <div className='flex m-2'>
         {arrayNumbers && arrayNumbers.length ? arrayNumbers.map((num, cnt) => {
           
-          return (<div key={cnt} className=' border-teal-100 border mr-8 w-1/5'>
-            <div className="grid grid-cols-4 gap-4 p-2 text-center">
+          return (<div key={cnt} className=' border-teal-100 border mr-8 w-2/5'>
+            <div className="grid grid-cols-9 gap-1 p-2 text-center">
               {Object.values(num).map((val, key) => {
                 let selected = false;
               if (val !== null && existingNumber.includes(+val)) {
